@@ -37,7 +37,7 @@ namespace dungeng
     template <size_t M, size_t N>
     class mat : public blas::bounded_matrix<double, M, N>
     {
-        using dN = const double[N];//std::array<const double, N>;
+        using dN = const double[N];
         using dNM = const dN[M];
 
     public:
