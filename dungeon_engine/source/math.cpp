@@ -38,4 +38,18 @@ namespace dungeng
     {
         return scale_matrix(vec3(xy));
     }
+
+
+
+    vec2 f()
+    {
+        double a = rand() ? 0. : 1.;
+        return vec2({ 1, a });
+    }
+
+    mat33 f1()
+    {
+        double a = rand() ? 0. : 1.;
+        return mat33({ { 1, a, 1 }, { 1, a, 1 }, { 1, a, 1 } });
+    }
 }
