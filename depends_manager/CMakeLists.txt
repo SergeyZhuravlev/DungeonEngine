@@ -50,11 +50,12 @@ target_include_directories(boost_headers INTERFACE
 ELSE ()
 
 find_package(SDL2 REQUIRED)
-add_library(sdl2 STATIC IMPORTED)
-set_target_properties(sdl2 PROPERTIES
-  IMPORTED_LOCATION "${SDL2_LIBRARIES}"
-  INTERFACE_INCLUDE_DIRECTORIES "${SDL2_INCLUDE_DIRS}"
-)
+add_library(sdl2 STATIC main.cpp)
+target_link_libraries(sdl2 "${SDL2_LIBRARIES}")
+target_include_directories(sdl2 INTERFACE "${SDL2_INCLUDE_DIRS}")
+
+message ("${SDL2_LIBRARIES}")
+message ("${SDL2_INCLUDE_DIRS}")
 
 #find_package(SDL2main REQUIRED)
 #add_library(sdl2main STATIC IMPORTED)
@@ -67,10 +68,10 @@ set(Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_MULTITHREADED ON)  
 set(Boost_USE_STATIC_RUNTIME OFF) 
 find_package(Boost 1.77.0 REQUIRED)
-add_library(boost_headers STATIC IMPORTED)
-set_target_properties(boost_headers PROPERTIES
-  IMPORTED_LOCATION "${Boost_LIBRARIES}"
-  INTERFACE_INCLUDE_DIRECTORIES "${Boost_INCLUDE_DIRS}"
-)
+add_library(boost_headers INTERFACE)
+target_include_directories(boost_headers INTERFACE "${Boost_INCLUDE_DIRS}")
+
+message ("${Boost_LIBRARIES}")
+message ("${Boost_INCLUDE_DIRS}")
 
 ENDIF ()
