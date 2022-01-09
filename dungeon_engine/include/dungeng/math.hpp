@@ -14,18 +14,21 @@ namespace dungeng
     template <size_t N>
     class vec : public blas::bounded_vector<double, N>
     {
+	private:
+		using base = blas::bounded_vector<double, N>;
+		
     public:
-        using bounded_vector::bounded_vector;
+        using base::base;
 
         constexpr vec(const std::array<const double, N>& src)
-            : bounded_vector<double, N>(Initer(src))
+            : base(Initer(src))
         {
         }
 
     private:
-        constexpr static bounded_vector Initer(const std::array<const double, N>& src)
+        constexpr static base Initer(const std::array<const double, N>& src)
         {
-            blas::bounded_vector<double, N> result;
+            base result;
             std::copy(std::cbegin(src), std::cend(src), result.begin());
             return result;
         }
@@ -37,21 +40,23 @@ namespace dungeng
     template <size_t M, size_t N>
     class mat : public blas::bounded_matrix<double, M, N>
     {
+	private:
+		using base = blas::bounded_matrix<double, M, N>;
         using dN = const double[N];
         using dNM = const dN[M];
 
     public:
-        using bounded_matrix::bounded_matrix;
+        using base::base;
         
         constexpr mat(dNM& src)
-            : bounded_matrix<double, M, N>(Initer(src))
+            : base(Initer(src))
         {
         }
 
     private:
-        constexpr static bounded_matrix Initer(dNM& src)
+        constexpr static base Initer(dNM& src)
         {
-            blas::bounded_matrix<double, M, N> result;
+            base result;
             for (size_t i = 0; i < std::size(src); ++i)
                 for (size_t j = 0; j < std::size(src[i]); ++j)
                     result(i, j) = src[i][j];

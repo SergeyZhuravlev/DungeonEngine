@@ -1,14 +1,18 @@
-#include <sdl.h>
+#include <SDL2/SDL.h>
 #include <stdio.h>
+#ifdef WIN32
 #include <windows.h>
+#endif
 #include <boost/any.hpp>
 
 int main(int argc, char** argv) {
+#ifdef WIN32
 	AllocConsole();
 	FILE* fDummy;
 	freopen_s(&fDummy, "CONIN$", "r", stdin);
 	freopen_s(&fDummy, "CONOUT$", "w", stderr);
 	freopen_s(&fDummy, "CONOUT$", "w", stdout);
+#endif
 	fprintf(stdout, "hello world");
 	SDL_Window* window = NULL;
 	SDL_Surface* screenSurface = NULL;

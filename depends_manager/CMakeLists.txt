@@ -56,12 +56,12 @@ set_target_properties(sdl2 PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${SDL2_INCLUDE_DIRS}"
 )
 
-find_package(SDL2main REQUIRED)
-add_library(sdl2main STATIC IMPORTED)
-set_target_properties(sdl2main PROPERTIES
-  IMPORTED_LOCATION "${SDL2main_LIBRARIES}"
-  INTERFACE_INCLUDE_DIRECTORIES "${SDL2main_INCLUDE_DIRS}"
-)
+#find_package(SDL2main REQUIRED)
+#add_library(sdl2main STATIC IMPORTED)
+#set_target_properties(sdl2main PROPERTIES
+#  IMPORTED_LOCATION "${SDL2main_LIBRARIES}"
+#  INTERFACE_INCLUDE_DIRECTORIES "${SDL2main_INCLUDE_DIRS}"
+#)
 
 set(Boost_USE_STATIC_LIBS ON) 
 set(Boost_USE_MULTITHREADED ON)  
