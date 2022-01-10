@@ -1,7 +1,15 @@
 #pragma once
+
+#ifdef _MSC_VER
+#pragma warning( push )
+#pragma warning( disable : 4996)
+#endif
 #include <boost/numeric/ublas/blas.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/vector.hpp>
+#ifdef _MSC_VER
+#pragma warning( pop ) 
+#endif
 
 namespace dungeng
 {
@@ -70,8 +78,8 @@ namespace dungeng
     using mat33 = mat<3, 3>;
 
     mat33 rotate_matrix_ccw(double angle);
-    mat33 translate_matrix(vec3 xy);
-    mat33 translate_matrix(vec2 xy);
-    mat33 scale_matrix(vec3 xy);
-    mat33 scale_matrix(vec2 xy);
+    mat33 translate_matrix(const vec3& xy);
+    mat33 translate_matrix(const vec2& xy);
+    mat33 scale_matrix(const vec3& xy);
+    mat33 scale_matrix(const vec2& xy);
 }

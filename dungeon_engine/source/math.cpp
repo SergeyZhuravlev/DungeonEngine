@@ -13,7 +13,7 @@ namespace dungeng
         return result;
     }
 
-    mat33 translate_matrix(vec3 xy)
+    mat33 translate_matrix(const vec3& xy)
     {
         mat33 result(blas::identity_matrix<double>(3));
         result(2, 0) = xy[0];
@@ -21,12 +21,12 @@ namespace dungeng
         return result;
     }
 
-    mat33 translate_matrix(vec2 xy)
+    mat33 translate_matrix(const vec2& xy)
     {
         return translate_matrix(vec3(xy));
     }
 
-    mat33 scale_matrix(vec3 xy)
+    mat33 scale_matrix(const vec3& xy)
     {
         mat33 result (blas::identity_matrix<double>(3));
         result(0, 0) = xy[0];
@@ -34,7 +34,7 @@ namespace dungeng
         return result;
     }
 
-    mat33 scale_matrix(vec2 xy)
+    mat33 scale_matrix(const vec2& xy)
     {
         return scale_matrix(vec3(xy));
     }
