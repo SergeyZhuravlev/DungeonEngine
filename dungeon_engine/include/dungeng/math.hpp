@@ -2,7 +2,6 @@
 #include <boost/numeric/ublas/blas.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/vector.hpp>
-#include <array>
 
 namespace dungeng
 {
@@ -14,22 +13,23 @@ namespace dungeng
     template <size_t N>
     class vec : public blas::bounded_vector<double, N>
     {
-	private:
-		using base = blas::bounded_vector<double, N>;
-		
+    private:
+        using base = blas::bounded_vector<double, N>;
+        using ArrayOfDouble = const double[N];
+
     public:
         using base::base;
 
-        constexpr vec(const std::array<const double, N>& src)
+        constexpr vec(ArrayOfDouble& src)
             : base(Initer(src))
         {
         }
 
     private:
-        constexpr static base Initer(const std::array<const double, N>& src)
+        constexpr static base Initer(ArrayOfDouble& src)
         {
             base result;
-            std::copy(std::cbegin(src), std::cend(src), result.begin());
+            std::copy(std::cbegin(src), std::cend(src), std::begin(result));
             return result;
         }
     };
@@ -42,19 +42,19 @@ namespace dungeng
     {
 	private:
 		using base = blas::bounded_matrix<double, M, N>;
-        using dN = const double[N];
-        using dNM = const dN[M];
+        using ArrayOfDouble = const double[N];
+        using ArrayWithArrayOfDouble = const ArrayOfDouble[M];
 
     public:
         using base::base;
         
-        constexpr mat(dNM& src)
+        constexpr mat(ArrayWithArrayOfDouble& src)
             : base(Initer(src))
         {
         }
 
     private:
-        constexpr static base Initer(dNM& src)
+        constexpr static base Initer(ArrayWithArrayOfDouble& src)
         {
             base result;
             for (size_t i = 0; i < std::size(src); ++i)
