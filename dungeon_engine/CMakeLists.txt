@@ -15,8 +15,4 @@ set (HEADERS
 add_library(dung_eng STATIC ${SOURCES} ${HEADERS})
 target_include_directories(dung_eng PUBLIC include)
 
-IF (WIN32 AND MSVC)
-target_link_libraries(dung_eng sdl2 sdl2main boost_headers)
-ELSE ()
 target_link_libraries(dung_eng sdl2 boost_headers)
-ENDIF ()

@@ -1,9 +1,10 @@
-#include <SDL2/SDL.h>
+#include <dungeng/engine.hpp>
+#include <SDL.h>
 #include <stdio.h>
+#include <boost/any.hpp>
 #ifdef WIN32
 #include <windows.h>
 #endif
-#include <boost/any.hpp>
 
 int main(int argc, char** argv) {
 #ifdef WIN32
