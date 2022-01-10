@@ -58,7 +58,7 @@ message ("SDL2 libraries founded at '${SDL2_LIBRARIES}'")
 message ("SDL2 includes founded at '${SDL2_INCLUDE_DIRS}'")
 add_library(sdl2 STATIC main.cpp)
 target_link_libraries(sdl2 "${SDL2_LIBRARIES}")
-target_include_directories(sdl2 INTERFACE "${SDL2_INCLUDE_DIRS}/SDL2")
+target_include_directories(sdl2 INTERFACE "${SDL2_INCLUDE_DIRS}")
 
 set(Boost_USE_STATIC_LIBS ON) 
 set(Boost_USE_MULTITHREADED ON)  

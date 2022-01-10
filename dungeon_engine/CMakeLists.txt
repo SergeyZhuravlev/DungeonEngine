@@ -14,5 +14,5 @@ set (HEADERS
 
 add_library(dung_eng STATIC ${SOURCES} ${HEADERS})
 target_include_directories(dung_eng PUBLIC include)
-
+target_compile_features(dung_eng PRIVATE cxx_std_17)
 target_link_libraries(dung_eng sdl2 boost_headers)

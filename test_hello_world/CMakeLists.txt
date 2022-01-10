@@ -15,5 +15,5 @@ ELSE ()
 add_executable(test_hello_world main.cpp)
 
 ENDIF ()
-
+target_compile_features(test_hello_world PRIVATE cxx_std_17)
 target_link_libraries(test_hello_world dung_eng)
