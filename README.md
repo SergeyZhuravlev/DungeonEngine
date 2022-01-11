@@ -15,4 +15,4 @@ Features:
 
 Dependencies:
 Windows: Automaticly download;
-Ubuntu: build-essential cmake lib<u>sdl2</u>-dev lib<u>boost</u>-all-dev.
+Ubuntu: build-essential cmake lib<ins>sdl2</ins>-dev lib<ins>boost</ins>-all-dev.
